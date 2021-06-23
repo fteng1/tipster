@@ -28,7 +28,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![](https://i.imgur.com/pddGt3f.gif)
+![](https://i.imgur.com/5lyk4Xd.gif)
 
 
 GIF created with [EZGif.com](https://ezgif.com/).
