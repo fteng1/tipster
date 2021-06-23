@@ -10,12 +10,59 @@
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipIndexControl;
 @property (weak, nonatomic) IBOutlet UITextField *inputAmountField;
+@property (weak, nonatomic) IBOutlet UISwitch *darkModeSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *darkModeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *defaultTipLabel;
 @end
 
 @implementation SettingsViewController
 
 - (NSString *)convertToPercent:(double)dec {
     return [NSString stringWithFormat:@"%.1f%%", dec];
+}
+
+- (void)syncDarkMode:(bool)isOn {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:isOn forKey:@"dark_mode"];
+    [defaults synchronize];
+}
+
+- (void)setColorMode:(double)animTime {
+    if (self.darkModeSwitch.isOn) {
+        [UIView animateWithDuration:animTime animations:^{
+            UIColor *darkDark = [UIColor colorWithRed:0 green:22/255.0 blue:102/255.0 alpha:1];
+            UIColor *darkMedium = [UIColor colorWithRed:0 green:35/255.0 blue:163/255.0 alpha:1];
+            UIColor *darkLight = [UIColor colorWithRed:33/255.0 green:59/255.0 blue:156/255.0 alpha:1];
+            self.inputAmountField.backgroundColor = darkLight;
+            self.view.backgroundColor = darkMedium;
+            self.tipIndexControl.backgroundColor = darkLight;
+            self.tipIndexControl.selectedSegmentTintColor = darkMedium;
+            self.darkModeSwitch.onTintColor = darkLight;
+            self.darkModeLabel.textColor = [UIColor whiteColor];
+            self.defaultTipLabel.textColor = [UIColor whiteColor];
+            self.inputAmountField.textColor = [UIColor whiteColor];
+            [self.tipIndexControl setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateSelected];
+            [self.tipIndexControl setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateNormal];
+
+        }];
+    }
+    else {
+        [UIView animateWithDuration:animTime animations:^{
+            UIColor *lightDark = [UIColor colorWithRed:117/255.0 green:233/255.0 blue:245/255.0 alpha:1];
+            UIColor *lightMedium = [UIColor colorWithRed:211/255.0 green:242/255.0 blue:245/255.0 alpha:1];
+            UIColor *lightLight = [UIColor colorWithRed:226/255.0 green:243/255.0 blue:245/255.0 alpha:1];
+            self.inputAmountField.backgroundColor = lightLight;
+            self.view.backgroundColor = lightMedium;
+            self.tipIndexControl.backgroundColor = lightMedium;
+            self.tipIndexControl.selectedSegmentTintColor = lightMedium;
+            self.darkModeSwitch.onTintColor = lightDark;
+            self.darkModeLabel.textColor = [UIColor blackColor];
+            self.defaultTipLabel.textColor = [UIColor blackColor];
+            self.inputAmountField.textColor = [UIColor blackColor];
+            [self.tipIndexControl setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]} forState:UIControlStateSelected];
+            [self.tipIndexControl setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]} forState:UIControlStateNormal];
+        }];
+    }
 }
 
 - (void)loadDefaultValue {
@@ -43,7 +90,11 @@
     [super viewWillAppear:animated];
     [self loadDefaultValue];
     [self setInputValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool darkModeOn = [defaults boolForKey:@"dark_mode"];
+    self.darkModeSwitch.on = darkModeOn;
     NSLog(@"View will appear");
+    [self setColorMode:0];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -54,7 +105,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-
+    [self syncDarkMode:self.darkModeSwitch.isOn];
     NSLog(@"View will disappear");
 }
 
@@ -76,6 +127,11 @@
 - (IBAction)onSelectIndex:(id)sender {
     [self loadDefaultValue];
     [self setInputValue];
+}
+
+- (IBAction)onToggle:(id)sender {
+    [self setColorMode:0.5];
+    [self syncDarkMode:self.darkModeSwitch.isOn];
 }
 
 /*

@@ -4,7 +4,7 @@
 
 Submitted by: **Felianne Teng**
 
-Time spent: **4** hours spent in total
+Time spent: **7** hours spent in total
 
 ## User Stories
 
@@ -15,14 +15,14 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 
 * [x] Settings page to change the default tip percentage.
-* [ ] UI animations
+* [x] UI animations
 * [ ] Remembering the bill amount across app restarts (if <10mins)
 * [ ] Using locale-specific currency and currency thousands separators.
 * [x] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Light/Dark mode functionality
 
 ## Video Walkthrough
 
@@ -38,7 +38,8 @@ GIF created with [EZGif.com](https://ezgif.com/).
 Describe any challenges encountered while building the app.
 
 - Getting the assistant feature to correctly display the code next to the Storyboard required restarting Xcode. 
-- I thought that the application was not printing at first, but I was looking at the Variables View instead of the Console. 
+- First looked at the Variables View instead of the Console when trying to print output, so believed that no output was being printed.
+- Keeping the Settings page the correct color required checking the saved settings before accessing the page, otherwise it would revert back to light mode.
 
 
 ## Credits
