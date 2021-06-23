@@ -25,6 +25,9 @@
         double defaultVal = [defaults doubleForKey:key];
         [self.tipIndexControl setTitle:[self convertToPercent:defaultVal] forSegmentAtIndex:i];
     }
+}
+- (void)setInputValue {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *key = [NSString stringWithFormat:@"default_tip_%ld", self.tipIndexControl.selectedSegmentIndex];
     double defaultVal = [defaults doubleForKey:key];
     NSString *str = [self convertToPercent:defaultVal];
@@ -39,12 +42,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self loadDefaultValue];
+    [self setInputValue];
     NSLog(@"View will appear");
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    [self.inputAmountField becomeFirstResponder];
     NSLog(@"View did appear");
 }
 
@@ -66,10 +70,12 @@
     double val = [self.inputAmountField.text doubleValue];
     [defaults setDouble:val forKey:key];
     [defaults synchronize];
+    [self loadDefaultValue];
 }
 
 - (IBAction)onSelectIndex:(id)sender {
     [self loadDefaultValue];
+    [self setInputValue];
 }
 
 /*

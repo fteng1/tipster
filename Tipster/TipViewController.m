@@ -23,7 +23,6 @@
 }
 
 - (NSString *)convertToPercent:(double)dec {
-    dec = (int) (dec * 100);
     return [NSString stringWithFormat:@"%.1f%%", dec];
 }
 
@@ -40,7 +39,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
+    [self.billAmountField becomeFirstResponder];
     NSLog(@"View did appear");
 }
 
@@ -70,6 +69,12 @@
         }
     }
     double tipPercentages[] = {0.15, 0.2, 0.25};
+    for (int i = 0; i < 3; i++) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *key = [NSString stringWithFormat:@"default_tip_%d", i];
+        double defaultVal = [defaults doubleForKey:key];
+        tipPercentages[i] = defaultVal / 100;
+    }
     double tipPercentage = tipPercentages[self.tipPercentageControl.selectedSegmentIndex];
     
     double bill = [self.billAmountField.text doubleValue];
