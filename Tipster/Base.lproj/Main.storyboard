@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gli-9U-ObQ">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="8GU-9W-egw" customClass="TipViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a8V-ck-1be">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lmj-Hx-tQf">
@@ -28,7 +28,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yLZ-Z0-JnJ">
-                                        <rect key="frame" x="0.0" y="161" width="374" height="32"/>
+                                        <rect key="frame" x="0.0" y="161" width="354" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
                                             <segment title="15%"/>
@@ -66,7 +66,13 @@
                             <outletCollection property="gestureRecognizers" destination="VdX-mb-U9g" appends="YES" id="rTf-wO-dDd"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tipster" id="Gmq-eX-2hc"/>
+                    <navigationItem key="navigationItem" title="Tipster" id="Gmq-eX-2hc">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="tpP-67-VaN">
+                            <connections>
+                                <segue destination="dfB-7Y-66o" kind="show" id="NpM-S2-Pbk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billAmountField" destination="l0R-P6-8ro" id="BFh-an-pns"/>
                         <outlet property="labelsContainerView" destination="Lmj-Hx-tQf" id="OfU-8b-XRb"/>
@@ -82,14 +88,64 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-400.00000000000006" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="-401.53846153846155" y="2.1327014218009479"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="6vX-3q-PI0">
+            <objects>
+                <viewController id="dfB-7Y-66o" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jgv-Yt-nJ8">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Default Tip Percentages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItZ-7q-FTC">
+                                <rect key="frame" x="24" y="117" width="200" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uT5-h7-rqI">
+                                <rect key="frame" x="28" y="162" width="334" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="0.15"/>
+                                    <segment title="0.20"/>
+                                    <segment title="0.25"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onSelectIndex:" destination="dfB-7Y-66o" eventType="valueChanged" id="KoG-iG-e6y"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.10" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c36-fn-0Bc">
+                                <rect key="frame" x="147" y="220" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onValueChanged:" destination="dfB-7Y-66o" eventType="editingChanged" id="fjq-vv-4xo"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gc1-Uo-bcp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="oTG-i8-bly"/>
+                    <connections>
+                        <outlet property="inputAmountField" destination="c36-fn-0Bc" id="99O-fQ-3MQ"/>
+                        <outlet property="tipIndexControl" destination="uT5-h7-rqI" id="7Ic-nV-bhA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IPN-zY-51c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392.30769230769232" y="2.1327014218009479"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nNv-HX-Aoi">
             <objects>
                 <navigationController id="gli-9U-ObQ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hrQ-Sf-9AQ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

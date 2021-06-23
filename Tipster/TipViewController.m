@@ -22,9 +22,41 @@
     // Do any additional setup after loading the view.
 }
 
+- (NSString *)convertToPercent:(double)dec {
+    dec = (int) (dec * 100);
+    return [NSString stringWithFormat:@"%.1f%%", dec];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    for (int i = 0; i < 3; i++) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *key = [NSString stringWithFormat:@"default_tip_%d", i];
+        double defaultVal = [defaults doubleForKey:key];
+        [self.tipPercentageControl setTitle:[self convertToPercent:defaultVal] forSegmentAtIndex:i];
+    }
+    NSLog(@"View will appear");
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    NSLog(@"View did appear");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    NSLog(@"View will disappear");
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+
+    NSLog(@"View did disappear");
+}
+
 - (IBAction)onTap:(id)sender {
-    NSLog(@"hello");
-    
     [self.view endEditing:true];
 }
 

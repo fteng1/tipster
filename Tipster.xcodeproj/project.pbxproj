@@ -16,6 +16,7 @@
 		70093256268274E0008C4A9C /* TipsterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70093255268274E0008C4A9C /* TipsterTests.m */; };
 		70093261268274E0008C4A9C /* TipsterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 70093260268274E0008C4A9C /* TipsterUITests.m */; };
 		708435E2268283F80099FC00 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 708435E1268283F80099FC00 /* TipViewController.m */; };
+		70DCBA1626829E2200AF64A3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DCBA1526829E2200AF64A3 /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		70093262268274E0008C4A9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		708435E0268283F80099FC00 /* TipViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		708435E1268283F80099FC00 /* TipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
+		70DCBA1426829E2200AF64A3 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		70DCBA1526829E2200AF64A3 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				70093242268274DF008C4A9C /* Main.storyboard */,
 				708435E0268283F80099FC00 /* TipViewController.h */,
 				708435E1268283F80099FC00 /* TipViewController.m */,
+				70DCBA1426829E2200AF64A3 /* SettingsViewController.h */,
+				70DCBA1526829E2200AF64A3 /* SettingsViewController.m */,
 				70093245268274E0008C4A9C /* Assets.xcassets */,
 				70093247268274E0008C4A9C /* LaunchScreen.storyboard */,
 				7009324A268274E0008C4A9C /* Info.plist */,
@@ -268,6 +273,7 @@
 			files = (
 				7009323B268274DF008C4A9C /* AppDelegate.m in Sources */,
 				7009324C268274E0008C4A9C /* main.m in Sources */,
+				70DCBA1626829E2200AF64A3 /* SettingsViewController.m in Sources */,
 				708435E2268283F80099FC00 /* TipViewController.m in Sources */,
 				7009323E268274DF008C4A9C /* SceneDelegate.m in Sources */,
 			);
